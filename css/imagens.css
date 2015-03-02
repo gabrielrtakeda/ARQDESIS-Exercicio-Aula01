@@ -1,0 +1,27 @@
+div.img {
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #d0d0d0;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+}
+
+div.img img {
+    display: inline;
+    margin: 5px;
+    border: 1px solid #ffffff;
+}
+
+div.img a:hover img {
+    border: 2px solid #d0d0d0;
+    margin: 4px;
+}
+
+div.desc {
+    text-align: center;
+    font-weight: normal;
+    width: 220px;
+    margin: 5px;
+}
