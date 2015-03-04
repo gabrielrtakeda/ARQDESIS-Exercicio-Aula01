@@ -3,13 +3,11 @@ function HtmlElementCreator() {
 
     this.append = function(properties)
     {
-        console.log(properties);
-
         var element = this.createNodeElement(properties);
         var selector = this.selectorStrategy(properties);
         selector.appendChild(element);
 
-        var childrenStructure = properties.structure._child;
+        var childrenStructure = properties.structure._children;
         if (this.hasChildren(childrenStructure)) {
             this.createChildNodeElement(
                 element,
@@ -71,13 +69,20 @@ function HtmlElementCreator() {
      * @param Object nodeStructure
      * @return void
      */
-     this.createChildNodeElement = function(parentNode, nodeStructure)
-     {
-        console.log(nodeStructure);
-        // var element = document.createElement(nodeStructure.element);
-        // element     = this.getHtmlNodeAttributes(nodeStructure);
-        // parentNode.appendChild(element);
-     }
+    this.createChildNodeElement = function(parentNode, nodeStructure)
+    {
+        console.log(nodeStructure._children);
+        var element = document.createElement(nodeStructure.element);
+        element = this.declareHtmlAttributes(element, nodeStructure);
+        // if (this.hasChildren(nodeStructure)) {
+        //     var childrenElement = this.createChildNodeElement(
+        //         element,
+        //         nodeStructure._children
+        //     );
+        //     element.appendChild(childrenElement);
+        // }
+        parentNode.appendChild(element);
+    }
 
      /**
       * Retorna somente atributos html que constam
@@ -97,6 +102,13 @@ function HtmlElementCreator() {
         return keys;
     }
 
+    /**
+     * Declara os atributos do elemento html
+     * de acordo com a estrutura definida.
+     * @param Object element
+     * @param Object nodeStructure
+     * return Object element
+     */
     this.declareHtmlAttributes = function(element, nodeStructure)
     {
         var attributes = this.getHtmlNodeAttributes(nodeStructure);
