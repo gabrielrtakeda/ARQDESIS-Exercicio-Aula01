@@ -11,53 +11,68 @@
     <body>
         <h2>Mochilas Masculinas</h2>
         <script type="text/javascript">
-        var htmlElementCreator = new HtmlElementCreator();
-        htmlElementCreator.append({
-            tag: "body",
-            structure: {
-                element: "div",
-                class: "img",
-                _children: {
-                    element: "a",
-                    target: "_blank",
+            var productImageSize = 210;
+            var products = [
+                {
                     href: "mochila_masc1.html",
-                    _children: {
-                        element: "img",
-                        src: "./img/masculina/mochila1.jpg",
-                        alt: "mochila masculina 1",
-                        width: "210",
-                        height: "210"
-                    }
+                    imageSource: "./img/masculina/mochila1.jpg",
+                    alt: "mochila masculina 1",
+                    description: "Couro"
+                }, {
+                    href: "mochila_masc2.htm",
+                    imageSource: "./img/masculina/mochila2.jpg",
+                    alt: "mochila masculina 2",
+                    description: "Couro e Lona Militar"
+                }, {
+                    href: "mochila_masc3.htm",
+                    imageSource: "./img/masculina/mochila3.jpg",
+                    alt: "mochila masculina 3",
+                    description: "Esportiva"
+                }, {
+                    href: "mochila_masc4.htm",
+                    imageSource: "./img/masculina/mochila4.jpg",
+                    alt: "mochila masculina 4",
+                    description: "Escalada"
+                }, {
+                    href: "mochila_masc5.htm",
+                    imageSource: "./img/masculina/mochila5.jpg",
+                    alt: "mochila masculina 5",
+                    description: "Custom"
+                }, {
+                    href: "mochila_masc6.htm",
+                    imageSource: "./img/masculina/mochila6.jpg",
+                    alt: "mochila masculina 6",
+                    description: "Vintage"
                 }
+            ];
+
+            var htmlElementCreator = new HtmlElementCreator();
+            for (var product of products) {
+                htmlElementCreator.append({
+                    tag: "body",
+                    structure: {
+                        element: "div",
+                        class: "img",
+                        _children: {
+                            element: "a",
+                            target: "_blank",
+                            href: product.href,
+                            _children: {
+                                element: "img",
+                                src: product.imageSource,
+                                alt: product.alt,
+                                width: productImageSize,
+                                height: productImageSize
+                            },
+                            _sibling: {
+                                element: "div",
+                                class: "desc",
+                                text: product.description
+                            }
+                        }
+                    }
+                });
             }
-        });
         </script>
-        <!-- <div class="img">
-            <a target="_blank" href="mochila_masc1.htm">
-                <img src="./img/masculina/mochila1.jpg"
-                     alt="mochila masculina 1"
-                     width="210"
-                     height="210" />
-            </a>
-            <div class="desc">Couro</div>
-        </div>
-        <div class="img">
-            <a target="_blank" href="mochila_masc2.htm">
-                <img    src="./img/masculina/mochila2.jpg"
-                        alt="mochila masculina 2"
-                        width="210"
-                        height="210" />
-            </a>
-            <div class="desc">Couro e Lona Militar</div>
-        </div>
-        <div class="img">
-            <a target="_blank" href="mochila_masc3.htm">
-                <img    src="./img/masculina/mochila3.jpg"
-                        alt="mochila masculina"
-                        width="210"
-                        height="210" />
-            </a>
-            <div class="desc">Esportiva</div>
-        </div> -->
     </body>
 </html>

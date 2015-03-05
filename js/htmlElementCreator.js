@@ -9,24 +9,11 @@ function HtmlElementCreator() {
 
         var childrenStructure = properties.structure._children;
         if (this.hasChildren(childrenStructure)) {
-            this.createChildNodeElement(
+            var childrenElement = this.createChildNodeElement(
                 element,
                 childrenStructure
             );
         }
-
-        // var element         = document.createElement(properties.structure.element);
-        // element             = this.declareHtmlAttributes(element, properties.structure);
-        // var body = document.getElementsByTagName("body");
-        // document[properties.tag].appendChild(element);
-
-        // var anchorElement   = document.createElement(properties.structure._children.element);
-        // anchorElement       = this.declareHtmlAttributes(anchorElement, properties.structure._children);
-        // element.appendChild(anchorElement);
-
-        // var imageElement    = document.createElement(properties.structure._children._children.element);
-        // imageElement        = this.declareHtmlAttributes(imageElement, properties.structure._children._children);
-        // anchorElement.appendChild(imageElement);
     }
 
     this.selectorStrategy = function(properties)
@@ -71,16 +58,35 @@ function HtmlElementCreator() {
      */
     this.createChildNodeElement = function(parentNode, nodeStructure)
     {
-        console.log(nodeStructure._children);
         var element = document.createElement(nodeStructure.element);
         element = this.declareHtmlAttributes(element, nodeStructure);
-        // if (this.hasChildren(nodeStructure)) {
-        //     var childrenElement = this.createChildNodeElement(
-        //         element,
-        //         nodeStructure._children
-        //     );
-        //     element.appendChild(childrenElement);
-        // }
+        parentNode.appendChild(element);
+        console.log(nodeStructure.element);
+
+        if (this.hasSibling(nodeStructure)) {
+            var siblingElement = this.createSiblingNodeElement(
+                parentNode,
+                nodeStructure._sibling
+            );
+        }
+
+        if (this.hasChildren(nodeStructure)) {
+            var childrenElement = this.createChildNodeElement(
+                element,
+                nodeStructure._children
+            );
+        }
+    }
+
+    this.createSiblingNodeElement = function(parentNode, nodeStructure)
+    {
+        var element = document.createElement(nodeStructure.element);
+        element = this.declareHtmlAttributes(element, nodeStructure);
+
+        if (this.hasText(nodeStructure)) {
+            var textNode = document.createTextNode(nodeStructure.text);
+            element.appendChild(textNode);
+        }
         parentNode.appendChild(element);
     }
 
@@ -122,5 +128,15 @@ function HtmlElementCreator() {
     this.hasChildren = function(nodeStructure)
     {
         return nodeStructure._children !== undefined;
+    }
+
+    this.hasSibling = function(nodeStructure)
+    {
+        return nodeStructure._sibling !== undefined;
+    }
+
+    this.hasText = function(nodeStructure)
+    {
+        return nodeStructure.text !== undefined;
     }
 }
