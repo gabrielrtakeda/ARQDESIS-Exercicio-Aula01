@@ -61,7 +61,6 @@ function HtmlElementCreator() {
         var element = document.createElement(nodeStructure.element);
         element = this.declareHtmlAttributes(element, nodeStructure);
         parentNode.appendChild(element);
-        console.log(nodeStructure.element);
 
         if (this.hasSibling(nodeStructure)) {
             var siblingElement = this.createSiblingNodeElement(

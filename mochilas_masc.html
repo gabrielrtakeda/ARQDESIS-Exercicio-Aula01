@@ -6,73 +6,20 @@
         <link rel="stylesheet" type="text/css" href="./css/imagens.css" />
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
         <script type="text/javascript" src="./js/htmlElementCreator.js"></script>
+        <script type="text/javascript" src="./js/productHtml.js"></script>
+        <script type="text/javascript" src="./js/products.js"></script>
     </head>
 
     <body>
         <h2>Mochilas Masculinas</h2>
         <script type="text/javascript">
-            var productImageSize = 210;
-            var products = [
-                {
-                    href: "mochila_masc1.html",
-                    imageSource: "./img/masculina/mochila1.jpg",
-                    alt: "mochila masculina 1",
-                    description: "Couro"
-                }, {
-                    href: "mochila_masc2.htm",
-                    imageSource: "./img/masculina/mochila2.jpg",
-                    alt: "mochila masculina 2",
-                    description: "Couro e Lona Militar"
-                }, {
-                    href: "mochila_masc3.htm",
-                    imageSource: "./img/masculina/mochila3.jpg",
-                    alt: "mochila masculina 3",
-                    description: "Esportiva"
-                }, {
-                    href: "mochila_masc4.htm",
-                    imageSource: "./img/masculina/mochila4.jpg",
-                    alt: "mochila masculina 4",
-                    description: "Escalada"
-                }, {
-                    href: "mochila_masc5.htm",
-                    imageSource: "./img/masculina/mochila5.jpg",
-                    alt: "mochila masculina 5",
-                    description: "Custom"
-                }, {
-                    href: "mochila_masc6.htm",
-                    imageSource: "./img/masculina/mochila6.jpg",
-                    alt: "mochila masculina 6",
-                    description: "Vintage"
-                }
-            ];
-
-            var htmlElementCreator = new HtmlElementCreator();
-            for (var product of products) {
-                htmlElementCreator.append({
-                    tag: "body",
-                    structure: {
-                        element: "div",
-                        class: "img",
-                        _children: {
-                            element: "a",
-                            target: "_blank",
-                            href: product.href,
-                            _children: {
-                                element: "img",
-                                src: product.imageSource,
-                                alt: product.alt,
-                                width: productImageSize,
-                                height: productImageSize
-                            },
-                            _sibling: {
-                                element: "div",
-                                class: "desc",
-                                text: product.description
-                            }
-                        }
-                    }
-                });
-            }
+            var products = new Products();
+            var productHtml = new ProductHtml(
+                new HtmlElementCreator()
+            );
+            productHtml.createDefault(
+                products.getMasculino()
+            );
         </script>
     </body>
 </html>
