@@ -25,3 +25,7 @@ div.desc {
     width: 220px;
     margin: 5px;
 }
+
+section.products {
+    margin-bottom: 40px;
+}

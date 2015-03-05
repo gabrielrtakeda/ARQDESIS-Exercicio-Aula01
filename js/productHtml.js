@@ -18,7 +18,7 @@ function ProductHtml(htmlElementCreator)
 
         for (var product of listProducts) {
             this.htmlElementCreator.append({
-                tag: "body",
+                id: "productsMasculino",
                 structure: {
                     element: "div",
                     class: "img",

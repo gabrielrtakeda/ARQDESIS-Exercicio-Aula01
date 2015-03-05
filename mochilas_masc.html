@@ -5,6 +5,7 @@
         <title>Mochilas Masculinas</title>
         <link rel="stylesheet" type="text/css" href="./css/imagens.css" />
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
+        <script type="text/javascript" src="./js/httpRequest.js"></script>
         <script type="text/javascript" src="./js/htmlElementCreator.js"></script>
         <script type="text/javascript" src="./js/productHtml.js"></script>
         <script type="text/javascript" src="./js/products.js"></script>
@@ -12,14 +13,29 @@
 
     <body>
         <h2>Mochilas Masculinas</h2>
-        <script type="text/javascript">
-            var products = new Products();
-            var productHtml = new ProductHtml(
-                new HtmlElementCreator()
-            );
-            productHtml.createDefault(
-                products.getMasculino()
-            );
-        </script>
+        <section id="productsMasculino" class="products overflow">
+            <script type="text/javascript">
+                var products = new Products();
+                var productHtml = new ProductHtml(
+                    new HtmlElementCreator()
+                );
+                productHtml.createDefault(
+                    products.getMasculino()
+                );
+            </script>
+        </section>
+
+        <h2>Camisetas Unissex</h2>
+        <section id="productsUnissex" class="products overflow">
+            <script type="text/javascript">
+                var httpRequest = new HttpRequest();
+                httpRequest.load(
+                    './camisetas_unissex.html',
+                    function(xhr) {
+                        document.getElementById('productsUnissex').innerHTML = xhr.responseText;
+                    }
+                );
+            </script>
+        </section>
     </body>
 </html>

@@ -23,7 +23,7 @@ function HtmlElementCreator() {
         if (properties.tag !== undefined) {
             selector = document[properties.tag]
 
-        } else if (properties.tag) {
+        } else if (properties.id) {
             selector = document.getElementById(properties.id);
 
         } else if (properties.class) {
@@ -99,9 +99,16 @@ function HtmlElementCreator() {
     this.getHtmlNodeAttributes = function(nodeStructure)
     {
         var keys = Object.keys(nodeStructure);
+        var notAttributeKeys = [
+            '_children',
+            '_sibling',
+            'element'
+        ];
         for (var i = 0; i < keys.length; i++) {
-            if (keys[i] === "_children" || keys[i] === "element") {
-                delete keys[i];
+            for (var j = 0; j < notAttributeKeys.length; j++) {
+                if (keys[i] === notAttributeKeys[j]) {
+                    delete keys[i];
+                }
             }
         }
         return keys;

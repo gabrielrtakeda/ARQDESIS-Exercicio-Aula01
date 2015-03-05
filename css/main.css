@@ -125,3 +125,7 @@ input.default {
 #bSubmit:hover {
     background-position: 0 -26px;
 }
+
+.overflow {
+    overflow: hidden;
+}
