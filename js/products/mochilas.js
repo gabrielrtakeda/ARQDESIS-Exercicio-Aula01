@@ -1,4 +1,4 @@
-function Products()
+function Mochilas()
 {
     this.self = this;
 

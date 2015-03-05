@@ -8,32 +8,20 @@
         <script type="text/javascript" src="./js/httpRequest.js"></script>
         <script type="text/javascript" src="./js/htmlElementCreator.js"></script>
         <script type="text/javascript" src="./js/productHtml.js"></script>
-        <script type="text/javascript" src="./js/products.js"></script>
+        <script type="text/javascript" src="./js/products/mochilas.js"></script>
+        <script type="text/javascript" src="./js/products/camisetas.js"></script>
     </head>
 
     <body>
         <h2>Mochilas Masculinas</h2>
         <section id="productsMasculino" class="products overflow">
             <script type="text/javascript">
-                var products = new Products();
+                var mochilas = new Mochilas();
                 var productHtml = new ProductHtml(
                     new HtmlElementCreator()
                 );
                 productHtml.createDefault(
-                    products.getMasculino()
-                );
-            </script>
-        </section>
-
-        <h2>Camisetas Unissex</h2>
-        <section id="productsUnissex" class="products overflow">
-            <script type="text/javascript">
-                var httpRequest = new HttpRequest();
-                httpRequest.load(
-                    './camisetas_unissex.html',
-                    function(xhr) {
-                        document.getElementById('productsUnissex').innerHTML = xhr.responseText;
-                    }
+                    mochilas.getMasculino()
                 );
             </script>
         </section>
