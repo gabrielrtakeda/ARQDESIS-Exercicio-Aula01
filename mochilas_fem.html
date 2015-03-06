@@ -7,19 +7,37 @@
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
         <script type="text/javascript" src="./js/htmlElementCreator.js"></script>
         <script type="text/javascript" src="./js/productHtml.js"></script>
-        <script type="text/javascript" src="./js/products.js"></script>
+        <script type="text/javascript" src="./js/products/mochilas.js"></script>
+        <script type="text/javascript" src="./js/products/camisetas.js"></script>
     </head>
 
     <body>
         <h2>Mochilas Femininas</h2>
-        <script type="text/javascript">
-            var products = new Products();
-            var productHtml = new ProductHtml(
-                new HtmlElementCreator()
-            );
-            productHtml.createDefault(
-                products.getFeminino()
-            );
-        </script>
+        <section id="productsFeminino" class="products overflow">
+            <script type="text/javascript">
+                var mochilas = new Mochilas();
+                var productHtml = new ProductHtml(
+                    new HtmlElementCreator()
+                );
+                productHtml.setContainerId('productsFeminino');
+                productHtml.createDefault(
+                    mochilas.getFeminino()
+                );
+            </script>
+        </section>
+
+        <h2>Camisetas Unissex</h2>
+        <section id="productsUnissex" class="products overflow">
+            <script type="text/javascript">
+                var camisetas = new Camisetas();
+                var productHtml = new ProductHtml(
+                    new HtmlElementCreator()
+                );
+                productHtml.setContainerId('productsUnissex');
+                productHtml.createDefault(
+                    camisetas.getUnissex()
+                );
+            </script>
+        </section>
     </body>
 </html>

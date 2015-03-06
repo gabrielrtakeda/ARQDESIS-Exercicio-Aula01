@@ -4,7 +4,7 @@ function HttpRequest()
     {
         var xhr;
 
-        if (typeof XMLHttpRequest !== 'undefined') {
+        if (typeof XMLHttpRequest === 'function') {
             xhr = new XMLHttpRequest();
 
         } else {
@@ -25,19 +25,15 @@ function HttpRequest()
              }
         }
 
-        xhr.onreadystatechange = ensureReadiness;
-
-        function ensureReadiness() {
-            if(xhr.readyState < 4) {
+        xhr.onreadystatechange = function ensureReadiness()
+        {
+            if (xhr.readyState !== 4) {
                 return;
             }
-
-            if(xhr.status !== 200) {
+            if (xhr.status !== 200) {
                 return;
             }
-
-            // all is well
-            if(xhr.readyState === 4) {
+            if (xhr.readyState === 4) {
                 callback(xhr);
             }
         }
